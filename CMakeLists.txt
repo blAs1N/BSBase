@@ -15,6 +15,5 @@ include (CMake/Platform.cmake)
 add_library (BSBase INTERFACE)
 target_include_directories (${PROJECT_NAME} INTERFACE "Inc/")
 
-add_compile_definitions (_UNICODE)
 add_compile_definitions (PLATFORM=${PLATFORM} ${PLATFORM} COMPILER=${COMPILER} ${COMPILER} ARCH=${ARCH} ${ARCH})
 add_compile_definitions (DLL_IMPORT=${DLL_IMPORT} DLL_EXPORT=${DLL_EXPORT})
