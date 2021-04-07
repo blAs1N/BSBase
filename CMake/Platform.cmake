@@ -12,12 +12,21 @@ endif ()
 
 # Determine compiler
 if (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+	set (DLL_IMPORT "__declspec(dllimport)" CACHE INTERNAL "DLL Import")
+	set (DLL_EXPORT "__declspec(dllexport)" CACHE INTERNAL "DLL Export")
+
 	set (COMPILER_MSVC TRUE)
 	set (COMPILER MSVC)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	set (DLL_IMPORT "__attribute__((visibility(\"default\")))" CACHE INTERNAL "DLL Import")
+	set (DLL_EXPORT "__attribute__((visibility(\"default\")))" CACHE INTERNAL "DLL Export")
+
 	set (COMPILER_CLANG TRUE)
 	set (COMPILER CLANG)
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+	set (DLL_IMPORT "__attribute__((visibility(\"default\")))" CACHE INTERNAL "DLL Import")
+	set (DLL_EXPORT "__attribute__((visibility(\"default\")))" CACHE INTERNAL "DLL Export")
+
 	set (COMPILER_GCC TRUE)
 	set (COMPILER GCC)
 endif()
