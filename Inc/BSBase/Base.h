@@ -20,13 +20,13 @@
 #define STRING_JOIN2(lhs, rhs) lhs##rhs
 
 #ifdef MSVC
-#	define BS_IMPORT __declspec(dllimport)
+#	define DLL_IMPORT __declspec(dllimport)
 #else
-#	define BS_IMPORT
+#	define DLL_IMPORT __attribute__((visibility("default")))
 #endif
 
 #ifdef MSVC
-#	define BS_EXPORT __declspec(dllexport)
+#	define DLL_EXPORT __declspec(dllexport)
 #else
-#	define BS_EXPORT
+#	define DLL_EXPORT __attribute__((visibility("default")))
 #endif
