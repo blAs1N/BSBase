@@ -1,5 +1,10 @@
 #pragma once
 
+#if !defined(x64) && !defined(x86)
+#	include <cstddef>
+#	include <type_traits>
+#endif
+
 namespace BSBase
 {
 	using uint8 = unsigned char;
@@ -23,11 +28,8 @@ namespace BSBase
 	using ssize_t = int32;
 	using ptrdiff_t = int32;
 #else
-	#include <cstddef>
-	#include <type_traits>
-	
-	using size_t = std::size_t;
-	using ssize_t = std::make_signed_t<size_t>;
-	using ptrdiff_t = std::ptrdiff_t;
+	using size_t = ::std::size_t;
+	using ssize_t = ::std::make_signed_t<size_t>;
+	using ptrdiff_t = ::std::ptrdiff_t;
 #endif
 }
