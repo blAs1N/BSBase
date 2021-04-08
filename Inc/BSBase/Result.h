@@ -6,6 +6,6 @@ namespace BSBase
 {
 	using Result = int32;
 
-	constexpr bool Succeeded(Result result) noexcept { result >= 0; }
-	constexpr bool Failed(Result result) noexcept { result < 0; }
+	constexpr bool Succeeded(Result result) noexcept { return result >= 0; }
+	constexpr bool Failed(Result result) noexcept { return result < 0; }
 }
