@@ -20,4 +20,4 @@ target_include_directories (${PROJECT_NAME}
   INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Inc>
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-include (Cmake/InstallProject.cmake)
+include (CMake/InstallProject.cmake)
