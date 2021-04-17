@@ -8,7 +8,7 @@ install (
 
 include(CMakePackageConfigHelpers)
 
-configure_package_config_file (Cmake/Config.cmake.in
+configure_package_config_file (CMake/Config.cmake.in
 	${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
 	INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}
 	NO_SET_AND_CHECK_MACRO
