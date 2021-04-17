@@ -12,8 +12,28 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build_windows:
-    runs-on: ubuntu-latest
+  windows-test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: lukka/get-cmake@latest
+      - name: Generate project files
+        run: ${{ github.workspace }}/Scripts/Setup
+      - name: Build
+        run: ${{ github.workspace }}/Scripts/Build
+
+  job:
+    name: ${{ matrix.os }}-test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            triplet: x64-linux
+          - os: macos-latest
+            triplet: x64-osx
     steps:
       - uses: actions/checkout@v2
       - uses: lukka/get-cmake@latest
