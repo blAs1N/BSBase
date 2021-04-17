@@ -7,13 +7,17 @@ project (BSBase
 	HOMEPAGE_URL "https://github.com/blAs1N/BSBase"
 )
 
+include (GNUInstallDirs)
+include (CMake/Platform.cmake)
+
 set (CMAKE_CXX_STANDARD 17)
 set (RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Binaries)
 
-include (CMake/Platform.cmake)
+add_library (${PROJECT_NAME} INTERFACE)
+add_library (${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
-add_library (BSBase INTERFACE)
-target_include_directories (${PROJECT_NAME} INTERFACE "Inc/")
+target_include_directories (${PROJECT_NAME}
+  INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Inc>
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-add_compile_definitions (PLATFORM=${PLATFORM} ${PLATFORM} COMPILER=${COMPILER} ${COMPILER} ARCH=${ARCH} ${ARCH})
-add_compile_definitions (DLL_IMPORT=${DLL_IMPORT} DLL_EXPORT=${DLL_EXPORT})
+include (Cmake/InstallProject.cmake)
