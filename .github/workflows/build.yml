@@ -22,6 +22,5 @@ jobs:
       - uses: lukka/get-cmake@latest
       - name: Generate project files
         run: sh ${{ github.workspace }}/Scripts/Setup.sh
-      # Build the whole project with Ninja (which is spawn by CMake).
       - name: Build
         run: sh ${{ github.workspace }}/Scripts/Build.sh
